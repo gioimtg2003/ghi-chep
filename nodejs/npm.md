@@ -1,0 +1,1 @@
+`node package manager: ` hay còn gọi là NPM, là một kho lưu trữ các libs, packages của hệ sinh thái node js; cũng giống như các kho lưu trữ khác: NuGet của .Net, Composer của PHP, Maven của java, Pip của python, ...; NPM hỗ trợ tối đa cho việc install, uninstall, update, control version các packages trong dự án Node - javascript.
