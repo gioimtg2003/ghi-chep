@@ -4,7 +4,7 @@
 
 `dependences`: chứa các packages cần thiết để chạy project
 `MAJOR.MINOR.PATCH`: version của packages
-`^`: chỉ update các version MINOR và PATCH
-`~`: chỉ update các version PATCH
-`*`: update tất cả các version
-`npm install` hoặc `npm i`: cài đặt các packages cần thiết để chạy project
+- `^`: chỉ update các version MINOR và PATCH
+- `~`: chỉ update các version PATCH
+- `*`: update tất cả các version
+- `npm install` hoặc `npm i`: cài đặt các packages cần thiết để chạy project
