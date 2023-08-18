@@ -27,4 +27,4 @@
 - `^`: chỉ update các version MINOR và PATCH
 - `~`: chỉ update các version PATCH
 - `*`: update tất cả các version
-- `npm install` hoặc `npm i`: cài đặt các packages cần thiết để chạy project
+`npm install` hoặc `npm i`: cài đặt các packages cần thiết để chạy project
