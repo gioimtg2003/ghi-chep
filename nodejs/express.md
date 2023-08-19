@@ -43,4 +43,6 @@ app.get("/json", (req, res) =>{
 ```
 - `require('dotenv').config()`: import module dotenv, giúp đọc các biến môi trường từ file .env
 - `process.env.MESSAGE_STYLE`: đọc biến môi trường MESSAGE_STYLE từ file .env
-
+---
+- `middleware`: là một hàm, nhận vào 3 tham số: request, response, next; thực hiện một số xử lý trên request, response; gọi hàm next() để chuyển request, response cho middleware tiếp theo. 
+- `next()`: hàm gọi middleware tiếp theo, nếu không gọi hàm này, request, response sẽ bị treo, không thể trả về cho client
