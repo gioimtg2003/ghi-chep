@@ -80,4 +80,21 @@ app.get("/now", (req, res, next) => {
     - third-party middleware: được cài đặt từ bên ngoài. Ví dụ: `app.use(bodyParser.urlencoded({ extended: false }));`
 
 ---
-
+- Lấy tham số trên URI
+```js
+app.get("/:word/", (req, res) => {
+  res.json({
+    "echo": req.params.word
+  });
+});
+```
+- Khi truy cập `/hello`: server sẽ trả về `{"echo": "hello"}`
+- `req.params.word`: lấy tham số word trên URI
+```js
+app.get("/", (req, res) => {
+  res.json({
+    "echo": req.query.word
+  });
+});
+```
+- Khi truy cập `?word=test`: server sẽ trả về `{"echo": "test"}`
