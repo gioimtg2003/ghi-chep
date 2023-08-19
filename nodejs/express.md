@@ -52,3 +52,18 @@ app.use((req, res, next) => {
   next();
 });
 ~~~
+- `app.use()`: tạo một middleware, áp dụng cho tất cả các route
+- `req.method`: phương thức của request
+- `req.path`: đường dẫn của request
+- `req.ip`: địa chỉ ip của client
+```js
+app.get("/now", (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+}, (req, res) => {
+  res.json({
+    "time": req.time
+  });
+});
+```
+- `req.time = new Date().toString();`: tạo một thuộc tính time cho request
