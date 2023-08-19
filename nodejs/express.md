@@ -33,3 +33,14 @@ app.get("/json", (req, res) =>{
 
 ```
 - `res.json()`: phục vụ cho việc trả về dữ liệu dạng json cho client
+```js
+require('dotenv').config()
+app.get("/json", (req, res) =>{
+  res.json({
+    "message": process.env.MESSAGE_STYLE 
+  });
+})
+```
+- `require('dotenv').config()`: import module dotenv, giúp đọc các biến môi trường từ file .env
+- `process.env.MESSAGE_STYLE`: đọc biến môi trường MESSAGE_STYLE từ file .env
+
