@@ -73,5 +73,11 @@ app.get("/now", (req, res, next) => {
   - Gọi hàm next() để chuyển request, response cho middleware tiếp theo trong stack
   - Kết thúc request, response
 - Các kiểu middleware:
-    - ss
+    - application-level middleware: áp dụng cho tất cả các route. Ví dụ: `app.use((req, res, next) => { ... });`. Sử dụng `next('route')`: để chuyển request, response cho route tiếp theo trong stack
+    - router-level middleware: áp dụng cho một route. Ví dụ: `app.get("/now", (req, res, next) => { ... });`
+    - error-handling middleware: xử lý các lỗi. Ví dụ: `app.use((err, req, res, next) => { ... });`
+    - built-in middleware: được tích hợp sẵn trong express. Ví dụ: `app.use(express.static(__dirname + "/public"));`
+    - third-party middleware: được cài đặt từ bên ngoài. Ví dụ: `app.use(bodyParser.urlencoded({ extended: false }));`
+
+---
 
