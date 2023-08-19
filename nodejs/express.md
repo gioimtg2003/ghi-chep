@@ -22,3 +22,14 @@ module.exports = app;
 ```
 - `res.sendFile(__dirname + "/views/index.html");`: trả về file index.html cho client
 - `__dirname`: biến toàn cục, chứa đường dẫn tuyệt đối của thư mục hiện tại
+```js
+let express = require('express');
+let app = express();
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
+});
+app.use("/public", express.static(__dirname + "/public"));
+module.exports = app;
+```
+- `app.use("/public", express.static(__dirname + "/public"));`: tạo một route tĩnh, khi truy cập vào route này, server sẽ trả về các file tĩnh trong thư mục public cho client
+- `express.static(__dirname + "/public")`: tạo một middleware, giúp server trả về các file tĩnh trong thư mục public cho client
