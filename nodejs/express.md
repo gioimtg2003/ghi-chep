@@ -1,2 +1,2 @@
-## `express: ` là một framework của nodejs, giúp xây dựng các ứng dụng web và API đơn giản, nhanh chóng, dễ dàng. 
+`express: ` là một framework của nodejs, giúp xây dựng các ứng dụng web và API đơn giản, nhanh chóng, dễ dàng. 
 - `npm install express`: cài đặt express
