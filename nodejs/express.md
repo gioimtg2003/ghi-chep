@@ -67,3 +67,8 @@ app.get("/now", (req, res, next) => {
 });
 ```
 - `req.time = new Date().toString();`: tạo một thuộc tính time cho request
+- Các chức năng của 1 middleware:
+  - Thực hiện các xử lý trên request, response. Ví dụ: `console.log(`${req.method} ${req.path} - ${req.ip}`);`
+  - Thêm các thuộc tính cho request. Ví dụ: `req.time = new Date().toString();`
+  - Gọi hàm next() để chuyển request, response cho middleware tiếp theo trong stack
+  - Kết thúc request, response
