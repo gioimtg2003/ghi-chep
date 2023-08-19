@@ -72,3 +72,6 @@ app.get("/now", (req, res, next) => {
   - Thêm các thuộc tính cho request. Ví dụ: `req.time = new Date().toString();`
   - Gọi hàm next() để chuyển request, response cho middleware tiếp theo trong stack
   - Kết thúc request, response
+- Các kiểu middleware:
+    - ss
+
