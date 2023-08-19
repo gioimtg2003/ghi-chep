@@ -46,3 +46,9 @@ app.get("/json", (req, res) =>{
 ---
 - `middleware`: là một hàm, nhận vào 3 tham số: request, response, next; thực hiện một số xử lý trên request, response; gọi hàm next() để chuyển request, response cho middleware tiếp theo. 
 - `next()`: hàm gọi middleware tiếp theo, nếu không gọi hàm này, request, response sẽ bị treo, không thể trả về cho client
+~~~js
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
+});
+~~~
