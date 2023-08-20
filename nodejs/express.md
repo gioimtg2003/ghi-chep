@@ -56,6 +56,7 @@ app.use((req, res, next) => {
 - `req.method`: phương thức của request
 - `req.path`: đường dẫn của request
 - `req.ip`: địa chỉ ip của client
+- `req.status`: trạng thái của request
 ```js
 app.get("/now", (req, res, next) => {
   req.time = new Date().toString();
@@ -80,7 +81,7 @@ app.get("/now", (req, res, next) => {
     - third-party middleware: được cài đặt từ bên ngoài. Ví dụ: `app.use(bodyParser.urlencoded({ extended: false }));`
 
 ---
-- Lấy tham số trên URI
+## - Lấy tham số trên URI
 ```js
 app.get("/:word/", (req, res) => {
   res.json({
