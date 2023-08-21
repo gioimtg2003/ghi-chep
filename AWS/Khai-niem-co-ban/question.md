@@ -1,0 +1,2 @@
+- The first product(S3) was released in 2006
+- the client-server model is an important concept in cloud computing

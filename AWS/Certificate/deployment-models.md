@@ -1,0 +1,12 @@
+## Deployment models
+- `On-Based`: 
+    - Every things run in the cloud
+    - this a model allows you to build new applications or move existing ones to the cloud.
+    - there are different levels of services ranging from low to high
+    - for example: a company might create an applications consisting of a web server, application server, and database server.
+- `On-premise`: 
+    - Deploy resources by using virtualization and resource management tools.
+    - On-premise is also known as private cloud deployment.
+    - Hiểu như là phần mềm hoặc phần cứng tại chỗ. Nhược điểm chi phí đầu tư cao và cơ sở hạ tầng đắt đỏ.
+- `Hybrid`:
+    - In a hybrid deployment, you connect cloud resource to on-premise infrastructure.

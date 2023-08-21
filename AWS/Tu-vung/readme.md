@@ -1,0 +1,49 @@
+## Từ vựng
+- `industry` ngành công nghiệp
+- `on-premise` trên nền tảng, tại chỗ
+- `recognized` được công nhận
+- `infrastructure` cơ sở hạ tầng
+- `rescheduling` sắp xếp lại lịch trình
+- `interact` tương tác
+- `direction` phương hướng
+- `objectives` mục tiêu
+- `definitions` các định nghĩa
+- `distinguish` phân biệt
+- `opportunities` những cơ hội
+- `covered` đề cập, bàn đến, bao gồm
+- `explanation` giải thích
+- `reinforcement` sự củng cố
+- `strategies` chiến lược
+- `probability` xác suất
+- `brief survey` khảo sát ngắn
+- `assessment` đánh giá
+- `pay-as-you-go` làm bao nhiêu trả bấy nhiêu
+- `conclude` kết luận
+- `consisting` = `include` bao gồm
+- `entirely` (adv) hoàn toàn, toàn bộ 
+- `effective` (adj) hiệu quả
+- `invest in` đầu tư
+- `consume`(v) tiêu thụ
+- `capacity` (n) năng lực, công suất, dung tích, khả năng.
+- `focus` (v) tập trung, (n) trọng tâm, trung tâm
+- `such as` như là, chẳng hạn như
+- `operation` (n) hoạt động, vận hành
+- `staffers` nhân viên
+- `utilize` (v) sử dụng
+- `experiment` (v) thử nghiệm
+- `instant` (adj) tức thì, ngay lập tức
+- `legacy` (n) di sản, di tích
+- `decide` (v) quyết định
+- `exchange` (v) trao đổi  `exchange data` trao đổi dữ liệu
+- `instance` (n) trường hợp, ví dụ, thể hiện, thực thể
+- `purpose` (n) mục đích
+- `fits` (v) phù hợp
+- `compute-intensive` (adj) tính toán mạnh, tính toán chuyên sâu
+- `Agility` (n) tính linh hoạt
+- `dataset` (n) tập dữ liệu
+- `accelerated` (adj) tăng tốc
+- `dedicated` (adj) dành riêng, riêng biệt, chuyên dụng
+- `architecture` (n) kiến trúc
+- `desired` (adj) mong muốn
+- `vulnerable` (adj) dễ bị tổn thương
+- `triggers` (n) kích hoạt, gây ra, kích động
