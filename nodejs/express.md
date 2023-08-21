@@ -99,3 +99,12 @@ app.get("/", (req, res) => {
 });
 ```
 - Khi truy cập `?word=test`: server sẽ trả về `{"echo": "test"}`
+## - Lấy tham số khi POST
+```js
+app.post("/name", (req, res) => {
+  res.json({
+    "name": `${req.body.first} ${req.body.last}`
+  });
+});
+```
+- `req.body`: lấy tham số từ body của request

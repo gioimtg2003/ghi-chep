@@ -1,0 +1,5 @@
+- `echo`: in ra terminal
+- `READ NAME`: nhập dữ liệu vào biến NAME
+- `echo $NAME`: in ra giá trị của biến NAME
+- `export NAME=VALUE`: tạo biến môi trường NAME với giá trị VALUE
+- `NAME="VALUE"`: tạo biến NAME với giá trị VALUE
