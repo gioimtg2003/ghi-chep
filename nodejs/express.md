@@ -101,6 +101,9 @@ app.get("/", (req, res) => {
 - Khi truy cập `?word=test`: server sẽ trả về `{"echo": "test"}`
 ## - Lấy tham số khi POST
 ```js
+let bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.post("/name", (req, res) => {
   res.json({
     "name": `${req.body.first} ${req.body.last}`
@@ -108,3 +111,12 @@ app.post("/name", (req, res) => {
 });
 ```
 - `req.body`: lấy tham số từ body của request
+- `bodyParser.urlencoded({ extended: false })`: tạo một middleware, giúp server đọc được các tham số từ body của request với các phương thức POST, PUT, PATCH
+---
+## - GET, POST, PUT, PATCH, DELETE
+- `GET`: lấy dữ liệu từ server
+- `POST`: tạo mới dữ liệu trên server
+- `PUT`: cập nhật dữ liệu trên server
+- `PATCH`: cập nhật một phần dữ liệu trên server
+- `DELETE`: xóa dữ liệu trên server
+---
