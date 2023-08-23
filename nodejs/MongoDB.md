@@ -66,7 +66,7 @@ module.exports = mongoose.model("Person", personSchema);;
 ```
 ---
 ## CURD
-- Create and save
+1 Create and save
 - Tạo 1 document mới
 ```js
 const createAndSave = (done) =>{
