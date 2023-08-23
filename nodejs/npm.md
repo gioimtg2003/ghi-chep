@@ -5,14 +5,19 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
+  "main": "server.js",
   "description": "nodejs",
   "dependencies" : {
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
+  devDependencies: {
+    "nodemon": "^2.0.7"
+  },
   "main": "index.js",
   "scripts": {
+    "start" "node server.js"
     "test": "echo \"Error: no test specified\" && exit 1" // chứa các câu lệnh để chạy project
   },
   "keywords": [
@@ -22,7 +27,8 @@
   "license": "ISC"
 }
 ```
-`dependences`: chứa các packages cần thiết để chạy project
+- `dependences`: chứa các packages cần thiết để chạy project ở môi trường production
+- `devDependences`: chứa các packages cần thiết để chạy project ở môi trường development hoặc test
 `MAJOR.MINOR.PATCH`: version của packages
 - `^`: chỉ update các version MINOR và PATCH
 - `~`: chỉ update các version PATCH
