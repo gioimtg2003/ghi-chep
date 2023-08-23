@@ -58,15 +58,51 @@ module.exports = Person;
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const personSchema = new Schema({
-  name: {type: String, required: true},
+  name: {type: String, required: true, unique: true},
   age: Number,
   favoriteFoods: [String]
 });
-const Person = mongoose.model("Person", personSchema);
-module.exports = Person;
+module.exports = mongoose.model("Person", personSchema);;
 ```
 ---
-## Create a Model
-- CURD: Create, Read, Update, Delete
-- file myApp.js
+## CURD
+- Create and save
+- Tạo 1 document mới
 ```js
+const createAndSave = (done) =>{
+  let me = new Person({
+    name: "Nguyễn Công Giới",
+    age: 20,
+    favoriteFoods: ["Cơm", "Bún"]
+  });
+  me.save( (err, data)=>{
+    if(err) return console.error(err);
+    done(null, data);
+  });
+}
+```
+- Create Many Documents with model.create()
+```js
+const arrayOfPeople = [
+  {name: "Nguyễn Công Giới", age: 20, favoriteFoods: ["Cơm", "Bún"]},
+  {name: "Nguyễn Văn A", age: 20, favoriteFoods: ["Cơm", "Bún"]},
+  {name: "Nguyễn Văn B", age: 20, favoriteFoods: ["Cơm", "Bún"]}
+];
+Person.create(arrayOfPeople, (err, data)=>{
+  if(err) return console.error(err);
+  done(null, data);
+});
+```
+- Khi tạo nhiều document, nếu có document nào bị lỗi thì sẽ không tạo document đó và trả về lỗi
+- `Note`: Kết quả trả về
+```js
+{ 
+  _id: 5a78fe3e2f44ba8f85a2409a,
+  name: 'Nguyễn Công Giới',
+  age: 20,
+  favoriteFoods: [ 'Cơm', 'Bún' ],
+  __v: 0
+}
+```
+- `_id`: là một thuộc tính tự động được tạo ra, có kiểu dữ liệu là `ObjectId`, giá trị này là mã định danh duy nhất của document
+- `__v`: là một thuộc tính tự động được tạo ra, có kiểu dữ liệu là `Number`, giá trị này là số phiên bản của document. Khi một document được tạo ra, giá trị của thuộc tính này là 0. Mỗi khi document được cập nhật, giá trị của thuộc tính này sẽ tăng lên 1
