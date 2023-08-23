@@ -1,0 +1,19 @@
+{
+  "name": "design_api_with_expressjs",
+  "version": "1.0.0",
+  "description": "![3 layer architecture](./images/architecture.png)\r - `Controller`: xử lý các request từ client, gọi các service để xử lý và trả về kết quả cho client\r - `Service`: xử lý các logic nghiệp vụ\r - `Data Access Layer`: xử lý các thao tác với database",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
