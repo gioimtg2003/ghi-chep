@@ -106,3 +106,23 @@ Person.create(arrayOfPeople, (err, data)=>{
 ```
 - `_id`: là một thuộc tính tự động được tạo ra, có kiểu dữ liệu là `ObjectId`, giá trị này là mã định danh duy nhất của document
 - `__v`: là một thuộc tính tự động được tạo ra, có kiểu dữ liệu là `Number`, giá trị này là số phiên bản của document. Khi một document được tạo ra, giá trị của thuộc tính này là 0. Mỗi khi document được cập nhật, giá trị của thuộc tính này sẽ tăng lên 1
+
+2. Tìm kiếm
+- Tìm kiếm nhiều document
+```js
+const findPeopleByName = (personName, done) => {
+  Person.find({name: personName}, (err, data)=>{
+    if(err) return console.error(err);
+    done(null, data);
+  });
+};
+```
+- Tìm kiếm một document
+```js
+const findOneByFood = (food, done) => {
+  Person.findOne({favoriteFoods: food}, (err, data)=>{
+    if(err) return console.error(err);
+    done(null, data);
+  });
+};
+```
