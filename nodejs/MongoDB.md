@@ -117,6 +117,7 @@ const findPeopleByName = (personName, done) => {
   });
 };
 ```
+
 - Tìm kiếm một document
 ```js
 const findOneByFood = (food, done) => {
@@ -126,3 +127,71 @@ const findOneByFood = (food, done) => {
   });
 };
 ```
+
+- Tìm kiếm một document theo id
+```js
+const findById = (id, done) =>{
+  Person.findById(id, (err, data) => {
+    if(err) return console.error(err);
+    done(null, data);
+  });
+}
+```
+
+- Tìm kiếm một document theo id và cập nhật (thủ công)
+```js
+const findById = (id, done) =>{
+  let newFood = "hamburger";
+  Person.findById(id, (err, oldData) => {
+    if(err) return console.error(err);
+    oldData.favoriteFoods.push(newFood);
+    oldData.save((err, newData)=>{
+      if(err) return console.error(err);
+      done(null, newData);
+    });
+  });
+}
+```
+
+- Tìm kiếm sử dụng findOneAndUpdate()
+```js
+findOneAndUpdate( conditions, update, options, callback ) // executes
+```
+- `options: {new: true}`: mặt định là `false`, nếu `true` thì sẽ trả về document mới sau khi cập nhật
+
+- Remove document bằng id
+```js
+const removeById = (personId, done) => {
+  Person.findByIdAndRemove(personId, (err, data)=>{
+    if(err) return console.error(err);
+    done(null, data);
+  });
+};
+```
+- Remove nhiều document
+```js
+const removeManyPeople = (name , done) =>{
+  Person.remove({name: name}, (err, res) => {
+    if(err) return console.error(err);
+    done(null, res);
+  });
+}
+```
+- Chain Search Query Helpers to Narrow Search Results
+```js
+const queryChain = (done) => {
+  let foodToSearch = "burrito";
+  Person.find({favoriteFoods: foodToSearch})
+    .sort({name: 1})
+    .limit(2)
+    .select({age: 0})
+    .exec((err, data)=>{
+      if(err) return console.error(err);
+      done(null, data);
+    });
+};
+```
+- `sort({name: 1})`: sắp xếp theo tên tăng dần (1) hoặc giảm dần (-1)
+- `limit(2)`: giới hạn số lượng document trả về
+- `select({age: 0})`: loại bỏ thuộc tính age trong document trả về (0), hoặc giữ lại thuộc tính age trong document trả về (1)
+- `exec()`: thực thi câu lệnh tìm kiếm
