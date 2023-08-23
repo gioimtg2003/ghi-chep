@@ -32,14 +32,38 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
 - `Model`: tương đương với một bảng trong SQL, là một class, mô tả các fields của một document
 ## Mongoose Schema vs. Model
 - Mongoose Model là 1 trình bao bọc Mongoose Schema. Mongoose Schema xác định cấu trúc của documents, giá trị mặc đinh, xác thực,... Trong khi Mongoose Model cung cấp một giao diện để tương tác với cơ sở dữ liệu MongoDB cho các documents như tạo, đọc, cập nhật, xóa,...
-1. Tạo một Schema
+1. Import Mongoose
+```js
+const mongoose = require('mongoose');
+```
+2. Tạo một Schema
 ```js
 const Schema = mongoose.Schema;
 const personSchema = new Schema({
-  name: { type: String, required: true },
+  name: {type: String, required: true},
   age: Number,
   favoriteFoods: [String]
 });
+```
+3. Tạo một Model
+```js
+const Person = mongoose.model("Person", personSchema);
+```
+4. Xuất Model
+```js
+module.exports = Person;
+```
+- Mix:
+```js
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const personSchema = new Schema({
+  name: {type: String, required: true},
+  age: Number,
+  favoriteFoods: [String]
+});
+const Person = mongoose.model("Person", personSchema);
+module.exports = Person;
 ```
 ---
 ## Create a Model
