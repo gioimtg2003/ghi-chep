@@ -1,15 +1,15 @@
 let express = require('express');
 let app = express();
-let route = express.Router();
+let v1Route = require('./v1/routes');
 require('dotenv').config();
+
 const port = process.env.PORT || 3000;
 
-route.use("/", (req, res, next) => { 
-    req.time = new Date().toString();
-    console.log("Time: " + req.time + ` ${req.method}`);
-    next();
+app.get("/", (req, res) => {
+    res.send("Hello World");
 })
-app.use("/api", route);
+app.use("/api/v1", v1Route);
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
