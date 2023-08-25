@@ -190,6 +190,7 @@ const queryChain = (done) => {
       done(null, data);
     });
 };
+
 ```
 - `sort({name: 1})`: sắp xếp theo tên tăng dần (1) hoặc giảm dần (-1)
 - `limit(2)`: giới hạn số lượng document trả về

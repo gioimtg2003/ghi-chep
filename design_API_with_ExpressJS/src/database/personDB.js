@@ -9,6 +9,15 @@ const getAllPerson = async () =>{
     }
 };
 
+const getPersonById = async (id) =>{
+    try {
+        let data = await Person.findById(id).select({_id: 0, __v: 0});
+        return data;
+    }catch (error) {
+        console.error(error);
+    };
+};
+
 // Tạo mới person
 const createPerson = async (person) => {
     try {
@@ -25,5 +34,6 @@ const createPerson = async (person) => {
 
 module.exports = {
     getAllPerson : getAllPerson,
-    createPerson : createPerson
+    createPerson : createPerson,
+    getPersonById : getPersonById
 }
