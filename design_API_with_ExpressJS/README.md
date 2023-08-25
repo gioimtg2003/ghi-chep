@@ -14,3 +14,6 @@
     http://localhost:8080/api/v1/...
     http://localhost:8080/api/v2/...
 ```
+---
+## - Đặt tên số nhiều cho tài nguyên
+
