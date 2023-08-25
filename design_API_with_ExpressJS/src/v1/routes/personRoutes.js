@@ -2,6 +2,8 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let router = express.Router();
 let personController = require('../../controllers/personController');
+const {body, matchedData, query} = require("express-validator");
+
 router.use(bodyParser.urlencoded({extended: true}));
 
 

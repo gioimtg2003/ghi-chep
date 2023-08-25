@@ -1,6 +1,16 @@
+const { body } = require("express-validator");
 let services = require("../services/personService");
+
+
 const getAllPerson = (req, res) => {
-    res.send("Lấy danh sách tất cả người dùng");
+    services.getAllPerson( (err, data) => {
+        if (err) return res.status(500).json({err: err});
+        res.json({
+            code: 200,
+            message: "Lấy dữ liệu thành công",
+            data: data
+        });
+    });
 };
 
 const getPersonById = (req, res) => {
@@ -8,9 +18,7 @@ const getPersonById = (req, res) => {
 };
 
 const createPerson = (req, res) => {
-    if(!req.body.name || !req.body.age || !req.body.address || !req.body.phone) 
-    return res.status(400).json({err: "Thông tin không đầy đủ"});
-
+    
     let person = {
         name: req.body.name,
         age: parseInt(req.body.age),
@@ -18,11 +26,11 @@ const createPerson = (req, res) => {
         phone: parseInt(req.body.phone)
     };
 
-    services.createPerson(person, (err, data) =>{
+    services.createPerson(person, (err, data) => { 
         if (err) return res.status(500).json({err: err});
         res.json({
             code: 200,
-            message: "Tạo mới người dùng thành công",
+            message: "Tạo mới thành công",
             data: data
         });
     });
