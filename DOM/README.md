@@ -63,3 +63,7 @@ document.getElementById("demo").innerHTML = text; // Hiển thị giá trị l�
 - `onmousedown / onmouseup`: xảy ra khi một nút chuột được nhấn xuống / được thả ra
 
 - [Link các sự kiện](https://www.w3schools.com/jsref/dom_obj_event.asp)
+---
+
+### - DOM NODES
+

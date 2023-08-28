@@ -14,7 +14,20 @@
 </body>
 <script>
     
-    let x = document.getElementById("main");
+    const delay  = (times)=>{
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(
+                    console.log(times)
+                )
+            },times)
+        })
+    };
+    console.log(199);
+    setTimeout (() =>{
+        console.log(3000);
+    }, 2000);
+    //console.log(2000);
     
     
 </script>
