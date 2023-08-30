@@ -1,5 +1,5 @@
 ### RENDER
-- `ReactDOM.render(<Component/>, document.getElementById('root'))`: render <Component/> vào thẻ có id là root.
+- `ReactDOM.render(<Component/>, document.getElementById('root'))`: render `<Component/>` vào thẻ có id là root.
 ---
 ```js
 const CurrentDate = (props) => {
@@ -15,15 +15,23 @@ CurrentDate.defaultProps = {
 const List = (props) => {
   return <p>{props.tasks.join(", ")}</p>
 };
+List.propTypes = {
+  tasks: PropTypes.array.isRequired
+};
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      date: Date()
+    };
   }
   render() {
+    const {date: tgian} = this.state;
     return (
       <div>
         <h3>What date is it?</h3>
         <CurrentDate date={Date()}/>
+        <h1>{tgian}</h1>
         <h3>What are you doing today?</h3>
         <List tasks={["Mow the lawn", "Walk the dog"]}/>
       </div>
@@ -34,5 +42,57 @@ class Calendar extends React.Component {
 - `{props.date}`: props.date là một biến, nó sẽ được truyền vào component CurrentDate thông qua props.
 - `date={Date()}`: truyền vào component CurrentDate một giá trị của biến date, giá trị này là một hàm Date().
 - `CurrentDate.defaultProps`: nếu không truyền vào component CurrentDate một giá trị của biến date thì giá trị mặc định của nó là "unknown".
+- `PropTypes.array.isRequired`: kiểm tra xem biến tasks có phải là một mảng hay không, nếu không phải thì sẽ báo lỗi.
+- `this.state = {date: Date()}`: khởi tạo state date với giá trị là hàm Date().
+---
+### Virtual DOM - Real DOM
+- `Virtual DOM`: là một bản sao của Real DOM, nó là một object JavaScript, nó có thể mô tả cấu trúc của Real DOM.
+- `Real DOM`: là một cây DOM đầy đủ, nó có thể được thay đổi bởi JavaScript.
+- Khi các thay đổi được thực hiện trên DOM, React sẽ tạo ra một Virtual DOM mới, sau đó React sẽ so sánh Virtual DOM mới với Virtual DOM cũ, và tìm ra sự khác biệt giữa chúng, cuối cùng React sẽ cập nhật Real DOM với những thay đổi đó. Điều này tăng hiệu suất của ứng dụng so với việc cập nhật Real DOM trực tiếp.
 ---
 
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Initial State'
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      name: 'React Rocks!'
+    })
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};
+```
+- `setState()`: là một phương thức của React.Component, nó được sử dụng để cập nhật state của component, bản chất của nó là một hàm bất đồng bộ, nó nhận vào một object và một callback function, object này chứa các giá trị mới của state, callback function này sẽ được gọi sau khi state được cập nhật.
+- `this.handleClick.bind(this)`: khi sử dụng `this.setState()` thì `this` sẽ không được trỏ tới component nữa, mà nó sẽ trỏ tới `undefined`, vì vậy chúng ta phải bind `this` vào trong hàm `handleClick()`.
+- `bind`: là một phương thức của Function, nó được sử dụng để gắn một giá trị cho `this` của một hàm, nó nhận vào một giá trị và trả về một hàm mới.
+- Nếu không sử dụng this bên trong handleClick thì có thể viết như sau:
+```js
+handleClick = () => {
+  this.setState({
+    name: 'React Rocks!'
+  })
+}
+```
+- `handleClick = () => {}`: là một arrow function, nó sẽ không tạo ra một `this` mới, mà nó sẽ sử dụng `this` của outer scope.
+- `arrow function`: là một hàm nặc danh, nó không có tên, nó được viết dưới dạng một biểu thức, nó không có `this`, `arguments`, `super`, `new.target`, và không thể được gọi bằng `new`.
+---
+### NOTES
+```js
+this.setState(state => ({
+  counter: state.counter + 1
+}));
+```
+- Bọc object trong dấu ngoặc đơn `()` để tránh `JavaScript` hiểu nhầm nó là một `block statement`.
