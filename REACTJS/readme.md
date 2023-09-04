@@ -191,6 +191,42 @@ shouldComponentUpdate(nextProps, nextState) {
 - phương thức trên sẽ được gọi trước khi component được render, nó sẽ kiểm tra xem `nextState.activeUsers` có phải là số chẵn hay không, nếu là số chẵn thì nó sẽ trả về `true` và component sẽ được render, nếu không thì nó sẽ trả về `false` và component sẽ không được render.
 
 ---
+### REDUX
+- `Redux`: là một thư viện JavaScript, nó được sử dụng để quản lý state của ứng dụng, nó có thể được sử dụng với các thư viện khác như React, Angular, Vue, ...
+- `Redux` có 3 thành phần chính là `store`, `action`, `reducer`.
+- `store`: là nơi lưu trữ state của ứng dụng.
+- `action`: là một object, nó chứa các thông tin về hành động mà chúng ta muốn thực hiện, ví dụ như thêm một item vào giỏ hàng, xóa một item khỏi giỏ hàng, ...
+- `reducer`: là một function, nó nhận vào hai tham số là `state` và `action`, nó sẽ thực hiện các hành động mà chúng ta muốn thực hiện, ví dụ như thêm một item vào giỏ hàng, xóa một item khỏi giỏ hàng, ... và trả về một state mới.
+
+```js
+const ADD = "ADD";
+const addMessage = (message) => {
+  return {
+    type: ADD,
+    message: message,
+  };
+};
+const messageReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD:
+      return [...state, action.message];
+    default:
+      return state;
+  }
+};
+const store = Redux.createStore(messageReducer);
+```
+- `ADD`: là một biến, nó chứa một chuỗi, nó được sử dụng để tránh việc gõ sai khi sử dụng action.
+- `addMessage()`: là một function, nó nhận vào một tham số là `message`, nó trả về một object, object này chứa hai thuộc tính là `type` và `message`.
+```js
+store.subscribe(() => {
+  const currentState = store.getState();
+  console.log(currentState);
+});
+store.dispatch(addMessage("Hello World!"));
+```
+- `store.subscribe()`: là một function, nó nhận vào một function, function này sẽ được gọi mỗi khi state của store thay đổi.
+---
 ### NOTES
 
 ```js
