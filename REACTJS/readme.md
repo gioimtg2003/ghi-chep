@@ -226,6 +226,58 @@ store.subscribe(() => {
 store.dispatch(addMessage("Hello World!"));
 ```
 - `store.subscribe()`: là một function, nó nhận vào một function, function này sẽ được gọi mỗi khi state của store thay đổi.
+
+- `Object.assign({}, oldObject, {nameUser: "Giới"})`: trả về một object mới, object này chứa các thuộc tính của `oldObject` và một thuộc tính mới là `nameUser` có giá trị là "Giới".
+
+```js
+const REQUESTING_DATA = 'REQUESTING_DATA'
+const RECEIVED_DATA = 'RECEIVED_DATA'
+
+const requestingData = () => { return {type: REQUESTING_DATA} }
+const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
+
+const handleAsync = () => {
+  return function(dispatch) {
+    dispatch(requestingData());
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice']
+      }
+      dispatch(receivedData(data))
+
+    }, 2500);
+  }
+};
+
+const defaultState = {
+  fetching: false,
+  users: []
+};
+
+const asyncDataReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: []
+      }
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users
+      }
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+);
+```
+- `ReduxThunk.default`: là một middleware, nó được sử dụng để xử lý các hàm bất đồng bộ, nó nhận vào một hàm, hàm này sẽ được gọi với hai tham số là `dispatch` và `getState`, `dispatch` được sử dụng để gửi action đến store, `getState` được sử dụng để lấy state của store.
+
 ---
 ### NOTES
 
