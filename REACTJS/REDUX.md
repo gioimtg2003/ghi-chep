@@ -1,0 +1,86 @@
+### REDUX
+- `Redux`: là một thư viện JavaScript, nó được sử dụng để quản lý state của ứng dụng, nó có thể được sử dụng với các thư viện khác như React, Angular, Vue, ...
+- `Redux` có 3 thành phần chính là `store`, `action`, `reducer`.
+- `store`: là nơi lưu trữ state của ứng dụng.
+- `action`: là một object, nó chứa các thông tin về hành động mà chúng ta muốn thực hiện, ví dụ như thêm một item vào giỏ hàng, xóa một item khỏi giỏ hàng, ...
+- `reducer`: là một function, nó nhận vào hai tham số là `state` và `action`, nó sẽ thực hiện các hành động mà chúng ta muốn thực hiện, ví dụ như thêm một item vào giỏ hàng, xóa một item khỏi giỏ hàng, ... và trả về một state mới.
+
+```js
+const ADD = "ADD";
+const addMessage = (message) => {
+  return {
+    type: ADD,
+    message: message,
+  };
+};
+const messageReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD:
+      return [...state, action.message];
+    default:
+      return state;
+  }
+};
+const store = Redux.createStore(messageReducer);
+```
+- `ADD`: là một biến, nó chứa một chuỗi, nó được sử dụng để tránh việc gõ sai khi sử dụng action.
+- `addMessage()`: là một function, nó nhận vào một tham số là `message`, nó trả về một object, object này chứa hai thuộc tính là `type` và `message`.
+```js
+store.subscribe(() => {
+  const currentState = store.getState();
+  console.log(currentState);
+});
+store.dispatch(addMessage("Hello World!"));
+```
+- `store.subscribe()`: là một function, nó nhận vào một function, function này sẽ được gọi mỗi khi state của store thay đổi.
+
+- `Object.assign({}, oldObject, {nameUser: "Giới"})`: trả về một object mới, object này chứa các thuộc tính của `oldObject` và một thuộc tính mới là `nameUser` có giá trị là "Giới".
+
+```js
+const REQUESTING_DATA = 'REQUESTING_DATA'
+const RECEIVED_DATA = 'RECEIVED_DATA'
+
+const requestingData = () => { return {type: REQUESTING_DATA} }
+const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
+
+const handleAsync = () => {
+  return function(dispatch) {
+    dispatch(requestingData());
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice']
+      }
+      dispatch(receivedData(data))
+
+    }, 2500);
+  }
+};
+
+const defaultState = {
+  fetching: false,
+  users: []
+};
+
+const asyncDataReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: []
+      }
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users
+      }
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+);
+```
+- `ReduxThunk.default`: là một middleware, nó được sử dụng để xử lý các hàm bất đồng bộ, nó nhận vào một hàm, hàm này sẽ được gọi với hai tham số là `dispatch` và `getState`, `dispatch` được sử dụng để gửi action đến store, `getState` được sử dụng để lấy state của store.
