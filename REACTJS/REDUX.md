@@ -186,7 +186,6 @@ const store = Redux.createStore(messageReducer);
 const Provider = ReactRedux.Provider;
 const connect = ReactRedux.connect;
 
-// Change code below this line
 class Presentational extends React.Component {
   constructor(props) {
     super(props);
@@ -225,11 +224,10 @@ class Presentational extends React.Component {
             })
           }
         </ul>
-      </div>
+      </div> 
     );
   }
 };
-// Change code above this line
 
 const mapStateToProps = (state) => {
   return {messages: state}
