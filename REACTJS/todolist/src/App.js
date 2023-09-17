@@ -28,30 +28,46 @@ class App extends React.Component {
         loading: false
       })
     }
-      , 1000)
+      , 500)
   }
-
+  componentWillMount(){
+    if(localStorage.getItem('todos')){
+      const todos = JSON.parse(localStorage.getItem('todos'));
+      for (let i = 0; i < todos.length; i++) {
+        this.props.onAdd(todos[i]);
+      }
+    }
+  }
   addTodo = () => {
     this.props.onAdd(this.state.input);
     this.setState({
       input: ''
     });
   }
-  
+  onKeyUp = () => {
+    this.props.onAdd(this.state.input);
+    this.setState({
+      input: ''
+    });
+  }
+
   onDelete = (id) => {
     this.props.onDelete(id);
   }
   render() {
     const todos = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+    
     if (this.state.loading) {
+      document.title = 'Loading...';
       return <div>Loading...</div>
     }
+    document.title = 'Todo List';
     return (
       <div className="App">
         <div className="App-header">
           <h1>Todo List</h1>
           <div className="container-header" style={{width:'40%'}}>
-            <Input value={this.state.input} onChange={this.onChange} />
+            <Input value={this.state.input} onChange={this.onChange}  onKeyUp={this.onKeyUp}/>
             <Button text="ADD"  onClick={this.addTodo}/>
           </div>
           <List todos={todos} onDelete={this.onDelete} />
