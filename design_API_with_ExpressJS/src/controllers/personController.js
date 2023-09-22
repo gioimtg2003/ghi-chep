@@ -37,7 +37,7 @@ const createPerson = (req, res) => {
         name: req.body.name,
         age: parseInt(req.body.age),
         address: req.body.address,
-        phone: parseInt(req.body.phone)
+        phone: parseInt(req.body.phone) 
     };
 
     services.createPerson(person, (err, data) => { 

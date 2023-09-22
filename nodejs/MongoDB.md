@@ -86,7 +86,7 @@ const createAndSave = (done) =>{
 const arrayOfPeople = [
   {name: "Nguyễn Công Giới", age: 20, favoriteFoods: ["Cơm", "Bún"]},
   {name: "Nguyễn Văn A", age: 20, favoriteFoods: ["Cơm", "Bún"]},
-  {name: "Nguyễn Văn B", age: 20, favoriteFoods: ["Cơm", "Bún"]}
+  {name: "Nguyễn Văn B", age: 20, favoriteFoods: ["Cơm", "Bún"]} 
 ];
 Person.create(arrayOfPeople, (err, data)=>{
   if(err) return console.error(err);
